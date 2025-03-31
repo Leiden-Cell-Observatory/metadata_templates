@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MDEConfiguration>
+    <MDEPredefinitions>
+        <SetupPre Name="Leiden University Minimal Biology Metadata (MiBMe)"/>
+        <SetupPre Name="Leiden University Minimal HCS Metadata (MiHCSMe)"/>
+    </MDEPredefinitions>
+    <MDEObjects>
+        <Definitions>
+            <ObjectDef Type="LU:Investigation">
+                <TagData DefaultValues="" Name="Investigator ORCID" Type="TextArea" Unit="" Value="" Visible="true"/>
+                <TagData DefaultValues="4" Name="Collaborator ORCIDs" Type="ArrayField" Unit="" Value="" Visible="true"/>
+                <TagData DefaultValues="" Name="Project (EU/NWO project number/title)" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+                <TagData DefaultValues="" Name="Investigation title (PhD thesis)" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+                <TagData DefaultValues="" Name="Investigation identifier" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+                <TagData DefaultValues="" Name="Investigation description" Type="TextArea" Unit="" Value="" Visible="true" />
+                <Parents Values="OME-Model" />
+            </ObjectDef>
+			<ObjectDef Type="LU:Assay">
+				<TagData DefaultValues="" Name="Assay Title" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+				<TagData DefaultValues="" Name="Assay description" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+				<TagData DefaultValues=""
+				         Name="Biological Imaging Method"
+				         Type="ComboBox"
+				         Unit=""
+				         Value=""
+				         Visible="true">
+				    <Ontology URL_restapi="http://data.bioontology.org" Acronym="FBbi" ID_href="http://purl.obolibrary.org/obo/FBbi_00000265" />
+				</TagData>
+
+				<TagData Name="Assay type" DefaultValues="Localization,Co-localization,time-lapse" Value="Localization"  Type="ComboBox" Unit="" Visible="true"/>
+				<TagData Name="Assay preparation" DefaultValues="Live imaging,Fixed,Sections,Expansion"  Type="ComboBox" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Biosample Taxon" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+				<TagData DefaultValues="" Name="Biosample Organism" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+				<TagData DefaultValues="" Name="Biosample description" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+				<TagData DefaultValues="" Name="Biosample part (e.g. tail, aerial hyphae, leaf, whole mount, cells)" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+				<TagData DefaultValues="" Name="ELN link" Type="TextField" Unit="" Value="" Visible="true"/>
+				<Parents Values="LU:Study" />
+			</ObjectDef>
+			<ObjectDef Type="LU:Study">
+            	<TagData DefaultValues="" Name="Study title (Thesis chapter for example)" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+				<TagData DefaultValues="" Name="Study internal ID" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+				<TagData DefaultValues="" Name="Study description" Type="TextArea" Unit="" Value="" Visible="true" Required="true"/>
+				<TagData DefaultValues="5" Name="Study keywords" Type="ArrayField" Unit="" Value="" Visible="true" Required="true"/>
+				<Parents Values="LU:Investigation" />
+			</ObjectDef>
+			<ObjectDef Type="LU:Library">
+				<TagData DefaultValues="" Name="Library filename" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Library file format" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Library type" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Library manufacturer" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Library version" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Library experimental conditions" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Quality control description" Type="TextField" Unit="" Value="" Visible="true"/>
+				<Parents Values="LU:Study" />
+			</ObjectDef>
+			<ObjectDef Type="LU:Protocol">
+				<TagData DefaultValues="" Name="HCS library protocol" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Growth protocol" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Treatment protocol" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="HCS data analysis protocol" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Imaging protocol" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Sample preparation protocol" Type="TextField" Unit="" Value="" Visible="true"/>
+				<Parents Values="LU:Study" />
+			</ObjectDef>
+			<ObjectDef Type="LU:Plate">
+				<TagData DefaultValues="" Name="Plate type" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Plate type manufacturer" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Plate type catalog number" Type="TextField" Unit="" Value="" Visible="true"/>
+				<Parents Values="LU:Study" />
+			</ObjectDef>
+			<ObjectDef Type="LU:Biosample">
+				<TagData DefaultValues="" Name="Cell line storage location" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Cell line clone number" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Cell line passage number" Type="TextField" Unit="" Value="" Visible="true"/>
+				<Parents Values="LU:Assay" />
+			</ObjectDef>
+
+            <ObjectDef Type="LU:Channels">
+				<TagData DefaultValues="4" Name="Channel ID" Type="ArrayField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="4" Name="Channel label (e.g. fluorophore)" Type="ArrayField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="4" Name="Entity visualized (e.g. DNA/name of protein)" Type="ArrayField" Unit="" Value="" Visible="true"/>
+                <Parents Values="LU:Image" />
+            </ObjectDef>
+            <ObjectDef Type="LU:Image">
+				<TagData DefaultValues="" Name="Microscope id" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="" Name="Transmission channel" Type="TextField" Unit="" Value="" Visible="true"/>
+				<TagData DefaultValues="Brightfield,Phase contrast,DIC,Epifluorescence,Other" Name="Illumination Type" Type="CheckComboBox" Unit="" Value="" Visible="true"/>
+                <Parents Values="LU:Assay" />
+            </ObjectDef>
+        </Definitions>
+        <Configurations>
+            <SetupConf Name="Leiden University Minimal Biology Metadata (MiBMe)">
+                <ObjectConf Type="LU:Investigation" Insert="true" InsertPoint="OME-Model" Required="true"/>
+                <ObjectConf Type="LU:Study" Insert="true" InsertPoint="LU:Investigation" Required="true"/>
+                <ObjectConf Type="LU:Assay" Insert="true" InsertPoint="LU:Study" Required="true"/>
+                <ObjectConf Type="LU:Image" Insert="true" InsertPoint="LU:Assay" Required="true"/>
+                <ObjectConf Name="Channels" Type="LU:Channels" Insert="true" InsertPoint="LU:Image" Required="true">
+					<TagDataProp DefaultValues="4" Name="Channel number" Type="ArrayField" Unit="" Value="1,2,3,4" Visible="true"/>
+				</ObjectConf>
+            </SetupConf>
+            <SetupConf Name="Leiden University Minimal HCS Metadata (MiHCSMe)">
+				<ObjectConf Type="LU:Investigation" Insert="true" InsertPoint="OME-Model" Required="true"/>
+                <ObjectConf Type="LU:Study" Insert="true" InsertPoint="LU:Investigation" Required="true"/>
+                	<ObjectConf Type="LU:Library" Insert="true" InsertPoint="LU:Study" Required="true"/>
+                	<ObjectConf Type="LU:Protocol" Insert="true" InsertPoint="LU:Study" Required="true"/>
+                	<ObjectConf Type="LU:Plate" Insert="true" InsertPoint="LU:Study" Required="true"/>
+                <ObjectConf Type="LU:Assay" Insert="true" InsertPoint="LU:Study" Required="true"/>
+                	<ObjectConf Type="LU:Biosample" Insert="true" InsertPoint="LU:Assay" Required="true"/>
+                	<ObjectConf Type="LU:Image" Insert="true" InsertPoint="LU:Assay" Required="true"/>
+                <ObjectConf Name="Channels" Type="LU:Channels" Insert="true" InsertPoint="LU:Image" Required="true">
+					<TagDataProp DefaultValues="4" Name="Channel number" Type="ArrayField" Unit="" Value="1,2,3,4" Visible="true"/>
+				</ObjectConf>
+            </SetupConf>
+        </Configurations>
+    </MDEObjects>
+</MDEConfiguration>
